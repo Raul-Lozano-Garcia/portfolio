@@ -142,7 +142,8 @@ p {
   width: min-content;
   grid-gap: 1rem;
   grid-template-columns: min-content max-content;
-  grid-template-areas: "img h1" "img p";
+  grid-template-areas: "img h1"
+ "img p";
   color: #141414;
 }
 
