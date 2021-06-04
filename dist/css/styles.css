@@ -85,10 +85,6 @@ p {
   transition: background 500ms ease-in-out, color 1000ms ease-in-out, border-color 1000ms ease-in-out;
 }
 
-.nav-transition {
-  transition: transform 250ms cubic-bezier(0.5, 0, 0.5, 1);
-}
-
 .theme-switch {
   width: 70px;
   height: 30px;
@@ -295,27 +291,31 @@ p {
   }
 }
 
-#header .nav-open #nav {
+#header .container #nav .nav-transition {
+  transition: transform 250ms cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+#header .container .nav-open #nav {
   transform: translateX(0);
 }
 
-#header .nav-open #logo {
+#header .container .nav-open #logo {
   position: fixed;
 }
 
-#header .nav-open #nav-toggle {
+#header .container .nav-open #nav-toggle {
   position: fixed;
 }
 
-#header .nav-open .hamburger {
+#header .container .nav-open .hamburger {
   transform: rotate(0.625turn);
 }
 
-#header .nav-open .hamburger::before {
+#header .container .nav-open .hamburger::before {
   transform: rotate(90deg) translateX(-6px);
 }
 
-#header .nav-open .hamburger::after {
+#header .container .nav-open .hamburger::after {
   opacity: 0;
 }
 
@@ -417,5 +417,88 @@ p {
   color: #ede9ec;
   background-color: #6e3f67;
   padding: .5em;
+}
+
+#skills {
+  text-align: center;
+  padding: 5em 0px;
+}
+
+#skills .container {
+  display: grid;
+  width: min-content;
+  grid-gap: 2rem;
+  grid-template-columns: min-content max-content;
+  grid-template-areas: "h2 h2 h2 h2 h2" "h31 h31 . h32 h32" "c1 c2 . b1 b2" "c3 c4 . b3 b4";
+}
+
+#skills .container h2 {
+  grid-area: h2;
+}
+
+#skills .container #h31 {
+  grid-area: h31;
+}
+
+#skills .container #h32 {
+  grid-area: h32;
+}
+
+#skills .container .html-skills {
+  grid-area: c1;
+}
+
+#skills .container .css-skills {
+  grid-area: c2;
+}
+
+#skills .container .javascript-skills {
+  grid-area: c3;
+}
+
+#skills .container .php-skills {
+  grid-area: c4;
+}
+
+#skills .container .teamwork-skills {
+  grid-area: b1;
+}
+
+#skills .container .communication-skills {
+  grid-area: b2;
+}
+
+#skills .container .problem-solving-skills {
+  grid-area: b3;
+}
+
+#skills .container .leadership-skills {
+  grid-area: b4;
+}
+
+@media only screen and (max-width: 900px) {
+  #skills .container {
+    grid-template-areas: "h2 h2" "h31 h31" "c1 c2" "c3 c4" "h32 h32" "b1 b2" "b3 b4";
+  }
+}
+
+#skills .container .round {
+  position: relative;
+}
+
+#skills .container .round .percentage {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  margin-top: -50px;
+  transform: translate(-50%);
+}
+
+#skills .container .round .skill-info {
+  display: block;
+}
+
+#skills .container .round .skill-info i {
+  margin-right: .5em;
 }
 /*# sourceMappingURL=styles.css.map */
