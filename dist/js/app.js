@@ -41,3 +41,12 @@ window.addEventListener('scroll',()=>{
         header.style.backgroundColor = 'transparent';
     }
 });
+
+function Circlle(el){
+    $(el).circleProgress({fill:{color:'red'}})
+    .on('circle-animation-progress', function(event,progress,stepValue){
+        $(this).find('.percentage').text(String(stepValue.toFixed(2)).substr(2)+'%');
+    });
+};
+
+Circlle('.round');
