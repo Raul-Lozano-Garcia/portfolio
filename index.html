@@ -33,7 +33,7 @@
             </button>
             <nav id="nav" class="color">
                 <ul>
-                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#intro">Inicio</a></li>
                     <li><a href="#skills">Habilidades</a></li>
                     <li><a href="#aboutMe">Sobre mí</a></li>
                     <li><a href="#projects">Proyectos</a></li>
@@ -53,7 +53,7 @@
                             <img src="assets/img/img_intro.jpg" alt="Imagen de Raúl Lozano">
                         </div>
                         <h1 class="color">Hola, me llamo<strong>Raúl Lozano</strong></h1>
-                        <p class="color">desarrollador front-end</p>
+                        <p>desarrollador front-end</p>
                     </div>
                 </div>
             </div>
@@ -63,55 +63,39 @@
             <div class="container">
                 <h2>Habilidades</h2>
                 <h3 id="h31">Programando</h3>
-                <div class="html-skills">
-                    <div class="round" data-value="0.85" data-size="150" data-thickness="12">
-                        <span class="percentage"></span>
-                        <span class="skill-info"><i class="fab fa-html5"></i>HTML</span>
-                    </div>
-                </div>
-                <div class="css-skills">
-                    <div class="round" data-value="0.80" data-size="150" data-thickness="12">
-                        <span class="percentage"></span>
-                        <span class="skill-info"><i class="fab fa-css3"></i>CSS</span>
-                    </div>
-                </div>
-                <div class="javascript-skills">
-                    <div class="round" data-value="0.75" data-size="150" data-thickness="12">
-                        <span class="percentage"></span>
-                        <span class="skill-info"><i class="fab fa-js-square"></i>JavaScript</span>
-                    </div>
-                </div>
-                <div class="php-skills">
-                    <div class="round" data-value="0.75" data-size="150" data-thickness="12">
-                        <span class="percentage"></span>
-                        <span class="skill-info"><i class="fab fa-php"></i>PHP</span>
-                    </div>
-                </div>
+                <article class="html-skills">
+                    <div class="skill-circle" data-percentage="0.85"></div>
+                    <span class="skill-info"><i class="fab fa-html5"></i>HTML</span>
+                </article>
+                <article class="css-skills">
+                    <div class="skill-circle" data-percentage="0.8"></div>
+                    <span class="skill-info"><i class="fab fa-css3"></i>CSS</span>
+                </article>
+                <article class="javascript-skills">
+                    <div class="skill-circle" data-percentage="0.75"></div>
+                    <span class="skill-info"><i class="fab fa-js-square"></i>JavaScript</span>
+                </article>
+                <article class="php-skills">
+                    <div class="skill-circle" data-percentage="0.75"></div>
+                    <span class="skill-info"><i class="fab fa-php"></i>PHP</span>
+                </article>
                 <h3 id="h32">Trabajando</h3>
-                <div class="teamwork-skills">
-                    <div class="round" data-value="0.80" data-size="150" data-thickness="12">
-                        <span class="percentage"></span>
-                        <span class="skill-info"><i class="fas fa-people-carry"></i>Trabajo en equipo</span>
-                    </div>
-                </div>
-                <div class="communication-skills">
-                    <div class="round" data-value="0.80" data-size="150" data-thickness="12">
-                        <span class="percentage"></span>
-                        <span class="skill-info"><i class="fas fa-chalkboard-teacher"></i>Comunicación</span>
-                    </div>
-                </div>
-                <div class="problem-solving-skills">
-                    <div class="round" data-value="0.90" data-size="150" data-thickness="12">
-                        <span class="percentage"></span>
-                        <span class="skill-info"><i class="fas fa-user-check"></i>Resolución de problemas</span>
-                    </div>
-                </div>
-                <div class="leadership-skills">
-                    <div class="round" data-value="0.90" data-size="150" data-thickness="12">
-                        <span class="percentage"></span>
-                        <span class="skill-info"><i class="fas fa-users"></i>Liderazgo</span>
-                    </div>
-                </div>
+                <article class="teamwork-skills">
+                    <div class="skill-line" data-percentage="0.8"></div>
+                    <span class="skill-info"><i class="fas fa-people-carry"></i>Trabajo en equipo</span>
+                </article>
+                <article class="communication-skills">
+                    <div class="skill-line" data-percentage="0.8"></div>
+                    <span class="skill-info"><i class="fas fa-chalkboard-teacher"></i>Comunicación</span>
+                </article>
+                <article class="problem-solving-skills">
+                    <div class="skill-line" data-percentage="0.9"></div>
+                    <span class="skill-info"><i class="fas fa-user-check"></i>Resolución de problemas</span>
+                </article>
+                <article class="leadership-skills">
+                    <div class="skill-line" data-percentage="0.9"></div>
+                    <span class="skill-info"><i class="fas fa-users"></i>Liderazgo</span>
+                </article>
             </div>
         </section>
         <!-- About me -->
@@ -125,8 +109,9 @@
     <!-- Footer -->
     <footer id="footer">
     </footer>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="dist/js/progressbar.min.js"></script>
     <script src="dist/js/app.js"></script>
 </body>
 </html>
