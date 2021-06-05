@@ -8,6 +8,7 @@
 
 html,
 body {
+  scroll-padding-top: 3em;
   scroll-behavior: smooth;
   background: #ede9ec;
   color: #141414;
@@ -22,7 +23,7 @@ body.dark {
   color: #ede9ec;
 }
 
-li {
+ul {
   list-style: none;
 }
 
@@ -239,7 +240,6 @@ p {
 }
 
 #header .container #nav ul {
-  list-style: none;
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -255,17 +255,9 @@ p {
   }
 }
 
-#header .container #nav ul li {
-  width: 100%;
-  text-align: center;
-}
-
 @media only screen and (min-width: 900px) {
   #header .container #nav ul li {
-    width: auto;
-  }
-  #header .container #nav ul li:nth-child(n+2) {
-    margin-left: 1em;
+    margin: 0px 1.5em;
   }
 }
 
@@ -275,47 +267,54 @@ p {
   font-size: 2.25rem;
 }
 
+#header .container #nav ul li a::after {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 2px;
+  margin: auto;
+  background-color: #ede9ec;
+  transition: all 300ms ease-in-out;
+  border-radius: 1em;
+}
+
 @media only screen and (min-width: 900px) {
   #header .container #nav ul li a {
     font-weight: 400;
     font-size: inherit;
-    padding: .5em 1em;
-    border-radius: 5px;
     color: #ede9ec;
   }
 }
 
-@media only screen and (min-width: 900px) {
-  #header .container #nav ul li a:hover {
-    background: #6e3f67;
-  }
+#header .container #nav ul li a:hover::after {
+  width: 100%;
 }
 
-#header .container #nav .nav-transition {
+#header .container #nav.nav-transition {
   transition: transform 250ms cubic-bezier(0.5, 0, 0.5, 1);
 }
 
-#header .container .nav-open #nav {
+#header .container.nav-open #nav {
   transform: translateX(0);
 }
 
-#header .container .nav-open #logo {
+#header .container.nav-open #logo {
   position: fixed;
 }
 
-#header .container .nav-open #nav-toggle {
+#header .container.nav-open #nav-toggle {
   position: fixed;
 }
 
-#header .container .nav-open .hamburger {
+#header .container.nav-open .hamburger {
   transform: rotate(0.625turn);
 }
 
-#header .container .nav-open .hamburger::before {
+#header .container.nav-open .hamburger::before {
   transform: rotate(90deg) translateX(-6px);
 }
 
-#header .container .nav-open .hamburger::after {
+#header .container.nav-open .hamburger::after {
   opacity: 0;
 }
 
@@ -426,10 +425,11 @@ p {
 
 #skills .container {
   display: grid;
+  place-items: center;
   width: min-content;
   grid-gap: 2rem;
   grid-template-columns: min-content max-content;
-  grid-template-areas: "h2 h2 h2 h2 h2" "h31 h31 . h32 h32" "c1 c2 . b1 b2" "c3 c4 . b3 b4";
+  grid-template-areas: "h2 h2 h2 h2 h2 h2 h2" "h31 h31 . . . h32 h32" "c1 c2 . . . b1 b2" "c3 c4 . . . b3 b4";
 }
 
 #skills .container h2 {
@@ -442,6 +442,12 @@ p {
 
 #skills .container #h32 {
   grid-area: h32;
+}
+
+@media only screen and (max-width: 1000px) {
+  #skills .container #h32 {
+    margin-top: 2em;
+  }
 }
 
 #skills .container .html-skills {
@@ -464,41 +470,92 @@ p {
   grid-area: b1;
 }
 
+@media only screen and (max-width: 480px) {
+  #skills .container .teamwork-skills {
+    margin-top: 2em;
+  }
+}
+
 #skills .container .communication-skills {
   grid-area: b2;
+}
+
+@media only screen and (max-width: 480px) {
+  #skills .container .communication-skills {
+    margin-top: 2em;
+  }
 }
 
 #skills .container .problem-solving-skills {
   grid-area: b3;
 }
 
+@media only screen and (max-width: 1000px) {
+  #skills .container .problem-solving-skills {
+    margin-top: 2em;
+  }
+}
+
 #skills .container .leadership-skills {
   grid-area: b4;
+}
+
+@media only screen and (max-width: 1000px) {
+  #skills .container .leadership-skills {
+    margin-top: 2em;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #skills .container {
+    grid-template-areas: "h2 h2" "h31 h31" "c1 c2" "c3 c4" "h32 h32" "b1 b2" "b3 b4";
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #skills .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+#skills .container .skill-circle {
+  width: 200px;
+  position: relative;
+}
+
+#skills .container .skill-circle .progressbar-text::after {
+  content: "%";
+}
+
+#skills .container .skill-line {
+  width: 200px;
+  position: relative;
+}
+
+#skills .container .skill-line .progressbar-text::after {
+  content: "%";
+}
+
+#skills .container .skill-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: .7em;
+}
+
+#skills .container .skill-info i {
+  margin-right: .5em;
 }
 
 @media only screen and (max-width: 900px) {
   #skills .container {
     grid-template-areas: "h2 h2" "h31 h31" "c1 c2" "c3 c4" "h32 h32" "b1 b2" "b3 b4";
   }
-}
-
-#skills .container .round {
-  position: relative;
-}
-
-#skills .container .round .percentage {
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  margin-top: -50px;
-  transform: translate(-50%);
-}
-
-#skills .container .round .skill-info {
-  display: block;
-}
-
-#skills .container .round .skill-info i {
-  margin-right: .5em;
 }
 /*# sourceMappingURL=styles.css.map */
