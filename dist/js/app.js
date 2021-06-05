@@ -1,3 +1,4 @@
+window.addEventListener('load',()=>{
 const navToggle = document.querySelector('#nav-toggle');
 const navLinks = document.querySelectorAll('#nav ul li a');
 const nav= document.querySelector("#nav");
@@ -26,10 +27,20 @@ darkToggle.addEventListener('click', () => {
     colorTags.forEach(color => {
         color.classList.toggle('dark');
     })
+
+    // Change background color of header when run dark mode 
+    if(window.scrollY>0){
+        if(body.classList.contains('dark')){
+            header.style.backgroundColor = 'hsl(0, 0%, 8%)';
+        }else{
+            header.style.backgroundColor = 'hsl(310, 13%, 54%)';
+        }
+    }else{
+        header.style.backgroundColor = 'transparent';
+    }
 });
 
 // Change background color of header when scrolls 
-//ARREGLAR ESTO PORQUE SI CAMBIO A MODO OSCURO O CLARO TENGO QUE HACER SCROLL PARA QUE SE NOTE EL CAMBIO
 window.addEventListener('scroll',()=>{
     if(window.scrollY>0){
         if(body.classList.contains('dark')){
@@ -42,11 +53,101 @@ window.addEventListener('scroll',()=>{
     }
 });
 
-function Circlle(el){
-    $(el).circleProgress({fill:{color:'red'}})
-    .on('circle-animation-progress', function(event,progress,stepValue){
-        $(this).find('.percentage').text(String(stepValue.toFixed(2)).substr(2)+'%');
-    });
-};
+//Creating skill circles
+jQuery(document).ready(function($){
+    let circles=$('.skill-circle');
+    const createCircle=(newClassName)=>{
+        let element=$(newClassName);
+        let percentage=element.attr('data-percentage');
+        let circle=new ProgressBar.Circle(newClassName,{
+            color: 'hsl(310, 13%, 54%)',
+            strokeWidth: 3,
+            trailWidth: 1,
+            trailColor: 'hsla(310, 13%, 54%,.5)',
+            easing: 'easeInOut',
+            duration: 1500,
+            text: {
+                autoStyleContainer: false
+            },
+            from: { color: 'hsl(310, 13%, 54%)', width: 1 },
+            to: { color: 'hsl(310, 13%, 54%)', width: 3 },
 
-Circlle('.round');
+            step: function(state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
+
+                var value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                circle.setText('');
+                } else {
+                circle.setText(value);
+                }
+
+            }
+            
+        })
+
+    circle.animate(percentage);
+
+    }
+        circles.each((index,element)=>{
+            let newClassName='circle-element-'+index;
+            $(element).addClass(newClassName);
+            createCircle('.'+newClassName);
+        })
+})
+
+//Creating skill lines
+jQuery(document).ready(function($){
+    let lines=$('.skill-line');
+    const createLine=(newClassName)=>{
+        let element=$(newClassName);
+        let percentage=element.attr('data-percentage');
+        let line=new ProgressBar.Line(newClassName,{
+            color: 'hsl(310, 13%, 54%)',
+            strokeWidth: 3,
+            trailWidth: 1,
+            trailColor: 'hsla(310, 13%, 54%,.5)',
+            easing: 'easeInOut',
+            duration: 1500,
+            text: {
+                style: {
+                    position: 'absolute',
+                    right: '0',
+                    left:'0',
+                    bottom: '15px',
+                    padding: 0,
+                    margin: 0,
+                    transform: null
+                },
+                autoStyleContainer: false
+            },
+            from: { color: 'hsl(310, 13%, 54%)', width: 1 },
+            to: { color: 'hsl(310, 13%, 54%)', width: 3 },
+
+            step: function(state, line) {
+                line.path.setAttribute('stroke', state.color);
+                line.path.setAttribute('stroke-width', state.width);
+
+                var value = Math.round(line.value() * 100);
+                if (value === 0) {
+                line.setText('');
+                } else {
+                line.setText(value);
+                }
+
+            }
+            
+        })
+
+    line.animate(percentage);
+
+    }
+        lines.each((index,element)=>{
+            let newClassName='line-element-'+index;
+            $(element).addClass(newClassName);
+            createLine('.'+newClassName);
+        })
+})
+
+});
